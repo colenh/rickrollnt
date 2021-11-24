@@ -3,7 +3,7 @@
 	"name": "rickrolln't",
 	"author": "colenh",
 	"short_name": "rickrolln't",
-	"version": "1.1.1",
+	"version": "1.1.0",
 	"description": "redirects rickrolls and more to a diffferent page",
 	"icons": {
 		"512": "icons/rickrollnt.png"

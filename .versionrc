@@ -3,6 +3,10 @@
     {
       "filename": "src/manifest.json",
       "type": "json"
+    },
+    {
+      "filename": "package.json",
+      "type": "json"
     }
   ]
 }
