@@ -1,6 +1,6 @@
 {
   "name": "rickrollnt",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "redirects specified rickroll urls to a different page",
   "repository": "https://github.com/colenh/rickrollnt.git",
   "author": "cole <me@coleh.lol>",
