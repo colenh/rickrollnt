@@ -1,0 +1,30 @@
+{
+	"manifest_version": 2,
+	"name": "rickrolln't",
+	"author": "colenh",
+	"short_name": "rickrolln't",
+	"version": "1.1.0",
+	"description": "redirects rickrolls and more to a diffferent page",
+	"icons": {
+		"512": "icons/rickrollnt.png"
+	},
+	"background": {
+		"scripts": [
+			"background.js"
+		]
+	},
+	"permissions": [
+		"webRequest",
+		"webRequestBlocking",
+		"*://youtube.com/*",
+		"*://*.youtube.com/*",
+		"*://*.thisworldthesedays.com/*",
+		"*://*.noordstar.me/*",
+		"*://rickrolled.com/"
+	],
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "{7e52e1e6-693b-4301-ae99-4c91bf2a1dd6}"
+		}
+	}
+}
