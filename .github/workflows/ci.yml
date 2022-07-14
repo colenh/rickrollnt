@@ -21,34 +21,22 @@ jobs:
       with:
         cmd: build
         source: src
-
-    - name: zip cx
-      uses: papeloto/action-zip@v1
-      with:
-        files: src/src
-        recursive: false
-        dest: rickrollnt-chrome.zip
-
-    - name: zip ff
-      uses: papeloto/action-zip@v1
-      with:
-        files: src/
-        recursive: false
-        dest: rickrollnt-firefox.zip
-
-    - name: zip op
-      uses: papeloto/action-zip@v1
-      with:
-        files: src/
-        recursive: false
-        dest: rickrollnt-opera.zip
         
-    - name: zip edge
-      uses: papeloto/action-zip@v1
+    - uses: montudor/action-zip@v1
       with:
-        files: src/
-        recursive: false
-        dest: rickrollnt-edge.zip
+        args: zip -qq -r rickrollnt-chrome.zip src
+        
+    - uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r rickrollnt-firefox.zip src
+        
+    - uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r rickrollnt-opera.zip src
+        
+    - uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r rickrollnt-edge.zip src
 
     - name: cx artifacts
       uses: actions/upload-artifact@v2
