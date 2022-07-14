@@ -107,7 +107,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 	(details) => {
 		const url = new URL(details.url);	
 		return {
-			redirectUrl: `https://rickrollnt.coleh.lol/safety`
+			redirectUrl: `https://rickrollnt.coleh.lol/safety.html`
 		};
 	},
 	{
