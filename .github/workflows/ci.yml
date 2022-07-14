@@ -34,23 +34,30 @@ jobs:
     - name: zip cx
       uses: papeloto/action-zip@v1
       with:
-        files: src/
+        files: src/*
         recursive: false
         dest: rickrollnt-chrome.zip
 
     - name: zip ff
       uses: papeloto/action-zip@v1
       with:
-        files: src/
+        files: src/*
         recursive: false
         dest: rickrollnt-firefox.zip
 
     - name: zip op
       uses: papeloto/action-zip@v1
       with:
-        files: src/
+        files: src/*
         recursive: false
         dest: rickrollnt-opera.zip
+        
+    - name: zip edge
+      uses: papeloto/action-zip@v1
+      with:
+        files: src/*
+        recursive: false
+        dest: rickrollnt-edge.zip
 
     - name: cx artifacts
       uses: actions/upload-artifact@v2
@@ -64,17 +71,17 @@ jobs:
         name: ff
         path: ${{ github.workspace }}/rickrollnt-firefox.zip
 
-    - name: ff artifacts 2
-      uses: actions/upload-artifact@v2
-      with:
-        name: ff2
-        path: ${{ steps.web-ext-build.outputs.target }}
-
     - name: op artifacts
       uses: actions/upload-artifact@v2
       with:
         name: op
         path: ${{ github.workspace }}/rickrollnt-opera.zip
+        
+    - name: edge artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: edge
+        path: ${{ github.workspace }}/rickrollnt-edge.zip
 
   release:
     name: 'create release'
