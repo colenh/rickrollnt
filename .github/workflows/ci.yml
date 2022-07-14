@@ -25,7 +25,7 @@ jobs:
     - name: zip cx
       uses: papeloto/action-zip@v1
       with:
-        files: src/
+        files: src/src
         recursive: false
         dest: rickrollnt-chrome.zip
 
