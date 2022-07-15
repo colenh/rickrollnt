@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/colenh/rickrollnt/compare/v1.2.1...v1.2.2) (2022-07-15)
+
+
+### Bug Fixes
+
+* no more edge ([c4448af](https://github.com/colenh/rickrollnt/commit/c4448afad5312f165995a01ea6e75be42ff4bbad))
+* no more manifest v3 ([e7664e6](https://github.com/colenh/rickrollnt/commit/e7664e62bfe81b56b0a32e828fa414170ee1b4db))
+
 ### [1.2.1](https://github.com/colenh/rickrollnt/compare/v1.2.0...v1.2.1) (2022-07-15)
 
 
