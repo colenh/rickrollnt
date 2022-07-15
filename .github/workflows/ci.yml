@@ -15,164 +15,49 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: lint
-      uses: kewisch/action-web-ext@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        cmd: lint
-        source: src
-        channel: listed
-
     - name: build
       id: web-ext-build
       uses: kewisch/action-web-ext@v1
       with:
         cmd: build
         source: src
-
-    - name: zip cx
-      uses: papeloto/action-zip@v1
-      with:
-        files: src/*
-        recursive: false
-        dest: rickrollnt-chrome.zip
-
-    - name: zip ff
-      uses: papeloto/action-zip@v1
-      with:
-        files: src/*
-        recursive: false
-        dest: rickrollnt-firefox.zip
-
-    - name: zip op
-      uses: papeloto/action-zip@v1
-      with:
-        files: src/*
-        recursive: false
-        dest: rickrollnt-opera.zip
         
-    - name: zip edge
-      uses: papeloto/action-zip@v1
+    - uses: montudor/action-zip@v1
       with:
-        files: src/*
-        recursive: false
-        dest: rickrollnt-edge.zip
+        args: zip -qq -r -j -D rickrollnt-chrome.zip src/
+        
+    - uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r -j -D rickrollnt-firefox.zip src/
+        
+    - uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r -j -D rickrollnt-opera.zip src/
+        
+    - uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r -j -D rickrollnt-edge.zip src/
 
     - name: cx artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: cx
+        name: rickrollnt-chrome.zip
         path: ${{ github.workspace }}/rickrollnt-chrome.zip
 
     - name: ff artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: ff
+        name: rickrollnt-firefox.zip
         path: ${{ github.workspace }}/rickrollnt-firefox.zip
 
     - name: op artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: op
+        name: rickrollnt-opera.zip
         path: ${{ github.workspace }}/rickrollnt-opera.zip
         
     - name: edge artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: edge
+        name: rickrollnt-edge.zip
         path: ${{ github.workspace }}/rickrollnt-edge.zip
-
-  release:
-    name: 'create release'
-    runs-on: ubuntu-latest
-    needs: build
-    if: startsWith(github.ref, 'refs/tags/v')
-    
-    steps:
-      - name: release info
-        id: release_info
-        run: |
-          echo ::set-output name=TAG::${GITHUB_REF/refs\/tags\//}
-          echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
-
-      - name: download cx artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: cx
-          path: artifacts/
-
-      - name: download ff artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: ff
-          path: artifacts/
-
-      - name: download op artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: op
-          path: artifacts/
-
-      - name: sign
-        id: web-ext-sign
-        uses: kewisch/action-web-ext@v1
-        with:
-          cmd: sign
-          source: ${{ steps.web-ext-build.outputs.target }}
-          channel: listed
-          apiKey: ${{ secrets.AMO_API_KEY }}
-          apiSecret: ${{ secrets.AMO_API_SECRET }}
-          timeout: 900000
-
-      - name: publish
-        uses: SebastienGllmt/chrome-addon@v3
-        with:
-          extension: lfdgfamnidfclkhbgbdnbmkilamjffba
-          zip: ${{ github.workspace }}/rickrollnt-chrome.zip
-          client-id: ${{ secrets.CHROME_CLIENT_ID }}
-          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
-          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
-
-      - name: create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.release_info.outputs.TAG }}
-          release_name: ${{ steps.release_info.outputs.TAG }}
-          body: |
-              Download and install the extension from your browser's [extension store](https://rickrollnt.coleh.lol/).
-              Learn more about this release from the [changelog](https://github.com/colenh/rickrollnt/blob/main/CHANGELOG.md#changelog).
-          draft: true
-
-      - name: chrome release assets
-        uses: actions/upload-release-asset@v1
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-            upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: artifacts/rickrollnt-chrome.zip
-            asset_name: rickrollnt-${{ steps.release_info.outputs.VERSION }}-chrome.zip
-            asset_content_type: application/octet-stream
-
-      - name: firefox release assets
-        uses: actions/upload-release-asset@v1
-        env:
-            GITHUB_TOKEN: ${{ github.token }}
-        with:
-            upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: artifacts/rickrollnt-firefox.zip
-            asset_name: rickrollnt-${{ steps.release_info.outputs.VERSION }}-firefox.zip
-            asset_content_type: application/octet-stream
-            
-      - name: opera release assets
-        uses: actions/upload-release-asset@v1
-        env:
-            GITHUB_TOKEN: ${{ github.token }}
-        with:
-            upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: artifacts/rickrollnt-firefox.zip
-            asset_name: rickrollnt-${{ steps.release_info.outputs.VERSION }}-opera.zip
-            asset_content_type: application/octet-stream
