@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.4](https://github.com/colenh/rickrollnt/compare/v1.2.3...v1.2.4) (2022-07-15)
+
+
+### Bug Fixes
+
+* moved icon ([9226a7d](https://github.com/colenh/rickrollnt/commit/9226a7d6273176109236101eec9d886c249045e0))
+
 ### [1.2.3](https://github.com/colenh/rickrollnt/compare/v1.2.2...v1.2.3) (2022-07-15)
 
 
