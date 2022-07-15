@@ -5,4 +5,4 @@
 [firefox](https://addons.mozilla.org/en-US/firefox/addon/rickrollnt/)  
 [chrome webstore](https://chrome.google.com/webstore/detail/rickrollnt/lfdgfamnidfclkhbgbdnbmkilamjffba)  
 [opera addons](https://addons.opera.com/en/extensions/details/rickrollnt/)  
-**coming to microsoft edge upon approval**
+**we currently do not plan to come to microsoft edge as it requires manifest v3**

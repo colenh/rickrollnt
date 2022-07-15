@@ -33,10 +33,6 @@ jobs:
     - uses: montudor/action-zip@v1
       with:
         args: zip -qq -r -j -D rickrollnt-opera.zip src/
-        
-    - uses: montudor/action-zip@v1
-      with:
-        args: zip -qq -r -j -D rickrollnt-edge.zip src/
 
     - name: cx artifacts
       uses: actions/upload-artifact@v2
@@ -55,9 +51,3 @@ jobs:
       with:
         name: rickrollnt-opera.zip
         path: ${{ github.workspace }}/rickrollnt-opera.zip
-        
-    - name: edge artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: rickrollnt-edge.zip
-        path: ${{ github.workspace }}/rickrollnt-edge.zip
