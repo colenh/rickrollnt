@@ -6,7 +6,7 @@
 	"version": "1.2.0",
 	"description": "redirects rickrolls and more to a diffferent page",
 	"icons": {
-		"512": "icons/rickrollnt.png"
+		"512": "rickrollnt.png"
 	},
 	"background": {
 		"service_worker": "background.js"
