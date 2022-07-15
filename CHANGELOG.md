@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/colenh/rickrollnt/compare/v1.2.2...v1.2.3) (2022-07-15)
+
+
+### Bug Fixes
+
+* restore lint ([b883d7b](https://github.com/colenh/rickrollnt/commit/b883d7b17c2c688bad8e5fe10e7165e1cbbcf88d))
+
 ### [1.2.2](https://github.com/colenh/rickrollnt/compare/v1.2.1...v1.2.2) (2022-07-15)
 
 
